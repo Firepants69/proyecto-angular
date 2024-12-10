@@ -1,0 +1,14 @@
+<div class="main-container">
+    
+    <main class="feed">
+        <header class="encabezado">Lo más reciente</header>
+        <br>
+        <div>
+            <div *ngFor="let post of posts" class="post-card">
+                <p>{{ post.Usuario }}</p>
+                <p>{{ post.Texto }}</p>
+                <p>{{ post.Comentarios }}</p>
+            </div>
+        </div>
+    </main>
+</div>

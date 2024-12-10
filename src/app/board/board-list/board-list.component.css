@@ -1,0 +1,40 @@
+.main-container {
+    display: flex;
+    height: 100vh;
+}  
+  .encabezado {
+    font-size: xx-large;
+    font-weight: 500;
+  }
+
+  .feed {
+    flex: 1;
+    background-color: white;
+    padding: 1.5rem;
+  }
+  
+  .post-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .post-card p {
+    margin: 0.5rem 0;
+  }
+  
+  .post-card p:first-child {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .post-card p:nth-child(even) {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .post-card p:last-child {
+    font-size: 0.750rem;
+  }

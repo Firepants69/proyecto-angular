@@ -1,0 +1,89 @@
+/* Estilos para el aside */
+.sidebar {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: linear-gradient(to bottom right, #2d2d2d, #1f1f1f);
+    height: calc(100vh - 32px);
+    width: 18rem;
+    border-radius: 1rem;
+    padding-top: 1rem;
+    transform: translateX(-20rem);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.5rem 2rem;
+  }
+  
+  .sidebar .logo h6 {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .sidebar .close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .sidebar .close-icon {
+    display: block;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .sidebar .menu {
+    margin: 1rem;
+  }
+  
+  .sidebar .menu ul {
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .sidebar .menu li {
+    margin-bottom: 1rem;
+  }
+  
+  .sidebar .menu button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.75rem;
+    background: transparent;
+    border: none;
+    color: white;
+    font-weight: 500;
+    text-align: left;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+  }
+  
+  .sidebar .menu button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .sidebar .menu p {
+    color: white;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    opacity: 0.75;
+  }
+  
+  .sidebar .menu li a {
+    text-decoration: none;
+  }
+  
