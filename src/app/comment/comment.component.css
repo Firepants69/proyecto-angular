@@ -1,0 +1,23 @@
+.post-container {
+    padding: 1rem;
+    background-color: #eef5f9c0;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .post-card {
+    background-color: #eef5f9;  
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.605);
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .comment-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.286);
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  

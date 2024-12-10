@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
 import { authenticatedGuard } from './core/guards/authenticated.guard';
 import { BoardListComponent } from './board/board-list/board-list.component';
+import { CommentComponent } from './comment/comment.component';
+import { RouterModule } from '@angular/router';
 
 export const routes: Routes = [
     {
@@ -31,6 +33,10 @@ export const routes: Routes = [
             {
                 path: 'board',
                 component: BoardListComponent
+            },
+            {
+                path: 'comments/:id', 
+                component: CommentComponent
             }
 
         ]

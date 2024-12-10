@@ -8,6 +8,9 @@
                 <p>{{ post.Usuario }}</p>
                 <p>{{ post.Texto }}</p>
                 <p>{{ post.Comentarios }}</p>
+                <a [routerLink]="['/comments', post.Usuario]" class="text-blue-500">
+                    Ver comentarios
+                  </a>
             </div>
         </div>
     </main>
