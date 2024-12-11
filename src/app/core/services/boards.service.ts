@@ -12,6 +12,11 @@ interface Post {
   accountImage: string;
 }
 
+interface toPost {
+  content: string;
+  userID: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,10 +24,10 @@ interface Post {
 
 
 export class BoardsService {
-  
   readonly API_URL = `${baseUrl}/Boards/list`
   readonly POST_LIKE_URL = `${baseUrl}/Like/post-likeBoard`;
   readonly DELETE_LIKE_URL = `${baseUrl}/Like/delete-likeBoard`;
+  readonly POST_URL = `${baseUrl}/Boards`
   
   boards: Post[];
   constructor(private http: HttpClient) {
@@ -56,4 +61,12 @@ export class BoardsService {
     const body = { boardId:boardId };
     return this.http.delete<any>(this.DELETE_LIKE_URL, { headers, body });
   }
+  
+  postBoard(newBoard: Partial<toPost>) {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.post<Partial<toPost>>(this.POST_URL, newBoard, { headers });
+   }
 }
