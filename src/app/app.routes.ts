@@ -14,17 +14,17 @@ export const routes: Routes = [
             {
                 path: 'dashboard',
                 loadComponent: () => import('./business/dashboard/dashboard.component'),
-                //canActivate: [authGuard]
+                canActivate: [authGuard]
             },
             {
                 path: 'profile',
                 loadComponent: () => import('./business/profile/profile.component'),
-                //canActivate: [authGuard]
+                canActivate: [authGuard]
             },
             {
                 path: 'tables',
                 loadComponent: () => import('./business/tables/tables.component'),
-                //canActivate: [authGuard]
+                canActivate: [authGuard]
             },
             {
                 path: '',
@@ -33,15 +33,20 @@ export const routes: Routes = [
             },
             {
                 path: 'board',
-                component: BoardListComponent
+                component: BoardListComponent,
+                canActivate: [authGuard]
+
             },
             {
                 path: 'comments/:id', 
-                component: CommentComponent
+                component: CommentComponent,
+                canActivate: [authGuard]
+
             },
             {
                 path: 'make-post',
-                component: MakePostComponent
+                component: MakePostComponent,
+                canActivate: [authGuard]
             }
 
         ]

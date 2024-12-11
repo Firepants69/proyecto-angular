@@ -3,11 +3,11 @@
     <main class="feed">
         <header class="encabezado">Lo más reciente</header>
         <br>
-        <div *ngFor="let post of posts" class="post-card">
+        <div *ngFor="let post of boardsService.boards" class="post-card">
             <p>{{ post.Usuario }}</p>
             <p>{{ post.Texto }}</p>
             <p>{{ post.Comentarios }}</p>
-            <a [routerLink]="['/comments', post.Usuario]" class="text-blue-500">
+            <a [routerLink]="['/comments', post.boardId]" class="text-blue-500">
                 Ver comentarios
             </a>
             <button class="like-button relative bottom-0 left-0 flex items-center gap-1"

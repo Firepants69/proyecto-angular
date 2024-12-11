@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ThreadService } from '../core/services/thread.service';
 
  //
 
@@ -42,7 +43,7 @@ export class CommentComponent implements OnInit{
     ]
   };
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,public threadService: ThreadService) {}
 
   ngOnInit(): void {
     this.postId = this.route.snapshot.paramMap.get('id');
