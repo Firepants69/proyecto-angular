@@ -1,11 +1,11 @@
-<div class="main-container">
+<div class="">
     
     <main class="feed">
         <header class="encabezado">Lo más reciente</header>
         <br>
         <div *ngFor="let post of boardsService.boards" class="post-card">
             
-            <div class="flex flex-row gap-2 jutsify-center items-center">
+            <div class=" flex flex-row gap-2 jutsify-center items-center">
                 <img class="h-10 w-10 rounded-full" src={{post.accountImage}} />
                 <label class="text-2xl font-bold">{{ post.Usuario }}</label>
             
