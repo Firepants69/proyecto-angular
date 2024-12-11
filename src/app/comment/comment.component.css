@@ -1,27 +1,25 @@
 .post-container {
-    padding: 1rem;
-    background-color: white;
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .post-card {
-    background-color: #eef5f9;  
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.605);
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-  .post-card p:nth-child(even) {
-    font-size: 1.5rem;
-    font-weight: 500;
-  }
-  
-  .comment-card {
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.286);
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
+  padding: 1rem;
+  background-color: #323232;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.post-card {
+  background-color: #404040;  
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: #b9b9b9;
+}
+
+.comment-card {
+  background-color: #404040;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: #b9b9b9;
+}
   
