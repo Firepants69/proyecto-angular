@@ -39,3 +39,22 @@
   .post-card p:last-child {
     font-size: 0.750rem;
   }
+  .like-button {
+    background: transparent;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .like-button:hover svg {
+      transform: scale(1.1);
+  }
+
+  .like-button span {
+      font-weight: bold;
+      color: #333;
+  }

@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';//
 interface Post {
   Usuario: string;
   Texto: string;
+  Likes: number;
   Comentarios: string;
 }
 @Component({
@@ -18,8 +19,8 @@ interface Post {
 
 export class BoardListComponent {
   posts: Post[] = [
-    { Usuario: 'YuyoHD', Texto: 'Oigan pibes cuando sube Vergara las calificaciones', Comentarios: '17 comentarios' },
-    { Usuario: 'TDShaggy', Texto: 'Quien para ir al concierto de zhrine', Comentarios: '28 comentarios'  },
-    { Usuario: 'TheBindingOfIsaac', Texto: 'ya páguenme lo de la posada culeros', Comentarios: '4 comentarios'  }
+    { Usuario: 'YuyoHD', Texto: 'Oigan pibes cuando sube Vergara las calificaciones', Likes: 30, Comentarios: '5 comentarios' },
+    { Usuario: 'TDShaggy', Texto: 'Quien para ir al concierto de zhrine', Likes: 40, Comentarios: '5 comentarios'  },
+    { Usuario: 'TheBindingOfIsaac', Texto: 'ya páguenme lo de la posada culeros', Likes: 5, Comentarios: '5 comentarios'  }
   ];
 }

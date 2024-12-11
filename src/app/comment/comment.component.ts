@@ -14,30 +14,30 @@ import { CommonModule } from '@angular/common';
 export class CommentComponent implements OnInit{
   postId: string | null = null;
   post: { Usuario: string, Texto: string, Comentarios: string } | undefined;
-  comments: { Usuario: string, Texto: string }[] = [];
+  comments: { Usuario: string, Texto: string, Likes: number }[] = [];
 
-  commentData: { [key: string]: { Usuario: string, Texto: string }[] } = {
+  commentData: { [key: string]: { Usuario: string, Texto: string, Likes: number }[] } = {
     'YuyoHD': [
-      { Usuario: 'zhrine', Texto: 'Que se apure, esto no pasaría con mi papá Ciro' },
-      { Usuario: 'Maizenauwu', Texto: 'Si no las sube hoy, me rapo we' },
-      { Usuario: 'KriegsBote3', Texto: 'No voy a dibujar nada hasta que las suba' },
-      { Usuario: 'Hectooooor', Texto: 'Qué diría Tere en esta situación?' },
-      { Usuario: 'Tere', Texto: 'Hectooooor' }
+      { Usuario: 'zhrine', Texto: 'Que se apure, esto no pasaría con mi papá Ciro', Likes: 5},
+      { Usuario: 'Maizenauwu', Texto: 'Si no las sube hoy, me rapo we', Likes: 5 },
+      { Usuario: 'KriegsBote3', Texto: 'No voy a dibujar nada hasta que las suba', Likes: 5 },
+      { Usuario: 'Hectooooor', Texto: 'Qué diría Tere en esta situación?', Likes: 5 },
+      { Usuario: 'Tere', Texto: 'Hectooooor', Likes: 5 }
     ],
     'TDShaggy': [
-      { Usuario: 'RickLanda', Texto: '¿Alguien va al concierto el sábado?' },
-      { Usuario: 'smthUTAU', Texto: 'Mejor vamos a visitar las intalaciones del CMAS' },
-      { Usuario: 'zhrine', Texto: 'voy a hacer como el Whiplash' },
-      { Usuario: 'RobertZuñiga', Texto: 'va a ir mi hermano' },
-      { Usuario: 'Tako.boi', Texto: 'Va a ir mi primo' }
+      { Usuario: 'RickLanda', Texto: '¿Alguien va al concierto el sábado?', Likes: 5 },
+      { Usuario: 'smthUTAU', Texto: 'Mejor vamos a visitar las intalaciones del CMAS', Likes: 5 },
+      { Usuario: 'zhrine', Texto: 'voy a hacer como el Whiplash', Likes: 5 },
+      { Usuario: 'RobertZuñiga', Texto: 'va a ir mi hermano', Likes: 5 },
+      { Usuario: 'Tako.boi', Texto: 'Va a ir mi primo', Likes: 5 }
 
     ],
     'TheBindingOfIsaac': [
-      { Usuario: 'AMLO', Texto: 'Yo ya pagué, ¿y ustedes?' },
-      { Usuario: 'ClaudiaSheinbaum', Texto: 'Me están estafando con los costos, qué horror.' },
-      { Usuario: 'Alexis', Texto: 'Ya pagué, pero me siento estafado, deberían haber avisado antes.' },
-      { Usuario: 'Jordido', Texto: 'No tengo dinero we' },
-      { Usuario: 'Henry', Texto: 'No voy a ir we' }
+      { Usuario: 'AMLO', Texto: 'Yo ya pagué, ¿y ustedes?', Likes: 5 },
+      { Usuario: 'ClaudiaSheinbaum', Texto: 'Me están estafando con los costos, qué horror.', Likes: 5 },
+      { Usuario: 'Alexis', Texto: 'Ya pagué, pero me siento estafado, deberían haber avisado antes.', Likes: 5 },
+      { Usuario: 'Jordido', Texto: 'No tengo dinero we', Likes: 5 },
+      { Usuario: 'Henry', Texto: 'No voy a ir we', Likes: 5 }
 
     ]
   };

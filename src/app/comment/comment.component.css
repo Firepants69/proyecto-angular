@@ -1,6 +1,6 @@
 .post-container {
     padding: 1rem;
-    background-color: #eef5f9c0;
+    background-color: white;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
   }
@@ -11,6 +11,10 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.605);
     padding: 1rem;
     margin-bottom: 1rem;
+  }
+  .post-card p:nth-child(even) {
+    font-size: 1.5rem;
+    font-weight: 500;
   }
   
   .comment-card {

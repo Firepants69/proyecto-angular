@@ -3,15 +3,26 @@
     <main class="feed">
         <header class="encabezado">Lo más reciente</header>
         <br>
-        <div>
-            <div *ngFor="let post of posts" class="post-card">
-                <p>{{ post.Usuario }}</p>
-                <p>{{ post.Texto }}</p>
-                <p>{{ post.Comentarios }}</p>
-                <a [routerLink]="['/comments', post.Usuario]" class="text-blue-500">
-                    Ver comentarios
-                  </a>
-            </div>
+        <div *ngFor="let post of posts" class="post-card">
+            <p>{{ post.Usuario }}</p>
+            <p>{{ post.Texto }}</p>
+            <p>{{ post.Comentarios }}</p>
+            <a [routerLink]="['/comments', post.Usuario]" class="text-blue-500">
+                Ver comentarios
+            </a>
+            <button class="like-button relative bottom-0 left-0 flex items-center gap-1"
+                (click)="post.Likes = (post.Likes || 0) + 1">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-black-500">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                </svg>
+                <span>{{ post.Likes }}</span>
+            </button>
         </div>
     </main>
+    <div class="new-post">
+        <a routerLink="/make-post">
+            <button routerLinkActive="bg-gradient-to-tr from-blue-600 to-blue-400 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]" 
+            class="post-button bg-blue absolute bottom-12 right-12 flex text-xl">Escribe algo</button>
+        </a>
+    </div>
 </div>
