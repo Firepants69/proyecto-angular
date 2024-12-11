@@ -5,6 +5,7 @@ import { BoardListComponent } from './board/board-list/board-list.component';
 import { CommentComponent } from './comment/comment.component';
 import { RouterModule } from '@angular/router';
 import { MakePostComponent } from './make-post/make-post.component';
+import { ThradComponent } from './threads/thrad/thrad.component';
 
 export const routes: Routes = [
     {
@@ -40,6 +41,12 @@ export const routes: Routes = [
             {
                 path: 'comments/:id', 
                 component: CommentComponent,
+                canActivate: [authGuard]
+
+            },
+            {
+                path: 'comments/:id/:thredId', 
+                component: ThradComponent,
                 canActivate: [authGuard]
 
             },

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ThreadService } from '../core/services/thread.service';
 
@@ -8,7 +8,7 @@ import { ThreadService } from '../core/services/thread.service';
 @Component({
   selector: 'app-comment',
   standalone: true,
-  imports: [CommonModule], //
+  imports: [CommonModule,RouterModule], //
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.css'
 })
@@ -30,7 +30,9 @@ export class CommentComponent implements OnInit{
             this.threadService.threads = data.map(thread=>({
               Usuario: thread.user.name, 
               Texto: thread.content,
-              Likes: thread.numOfLikes
+              Likes: thread.numOfLikes,
+              id: thread.id,
+              boardId: thread.boardId,
 
             })) 
           },error:(err)=>{
@@ -42,17 +44,6 @@ export class CommentComponent implements OnInit{
     }
   }
 
-  private getPostText(id: string): string {
-    switch (id) {
-      case 'YuyoHD':
-        return 'Oigan pibes cuando sube Vergara las calificaciones';
-      case 'TDShaggy':
-        return 'Quien para ir al concierto de zhrine';
-      case 'TheBindingOfIsaac':
-        return 'ya páguenme lo de la posada culeros';
-      default:
-        return '';
-    }
-  }
+  
 
 }
