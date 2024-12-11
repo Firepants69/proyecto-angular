@@ -17,26 +17,24 @@ export class BoardListComponent implements OnInit{
   constructor(public boardsService: BoardsService){
 
   }
-  // posts: Post[] = [
-  //   { Usuario: 'YuyoHD', Texto: 'Oigan pibes cuando sube Vergara las calificaciones', Likes: 30, Comentarios: '5 comentarios' },
-  //   { Usuario: 'TDShaggy', Texto: 'Quien para ir al concierto de zhrine', Likes: 40, Comentarios: '5 comentarios'  },
-  //   { Usuario: 'TheBindingOfIsaac', Texto: 'ya páguenme lo de la posada culeros', Likes: 5, Comentarios: '5 comentarios'  }
-  // ];
-
   ngOnInit(): void {
     this.getBoards();
   }
 
+  
+
   getBoards(){
     this.boardsService.getBoards().subscribe({
       next:(data)=>{
+        console.log(data)
         this.boardsService.boards = data.map(board=>({
           Usuario: board.user.name,
           Texto: board.content,
           Likes: board.numOfLikes,
           Comentarios: board.numOfResponses,
-          islked : board.isLiked,
-          boardId: board.id
+          isLiked : board.isLiked,
+          boardId: board.id,
+          accountImage: board.user.image == null ? "https://localhost:7257/user-ico/default.jpg":board.user.image  
         }))
       }
       ,error:(error)=>{
@@ -44,4 +42,21 @@ export class BoardListComponent implements OnInit{
       }
     })
   }
+
+  toggleLike(board: any) {
+    if (board.isLiked) {
+      // Si ya le ha dado like, eliminarlo
+      this.boardsService.removeLike(board.boardId).subscribe(() => {
+        board.Likes--;
+        board.isLiked = false;
+      });
+    } else {
+      // Si no le ha dado like, agregarlo
+      this.boardsService.addLike(board.boardId).subscribe(() => {
+        board.Likes++;
+        board.isLiked = true;
+      });
+    }
+  }
+  
 }

@@ -16,8 +16,10 @@ export class AuthService {
   login(userName:string,password:string): Observable<any>{
     return this.httpClient.post<any>(this.LOGIN_URL,{userName,password}).pipe(
       tap(response=>{
+        console.log(response)
         if(response.accessToken){
           this.setToken(response.accessToken);
+          localStorage.setItem("userId",response.userId)
         }
       })
     );

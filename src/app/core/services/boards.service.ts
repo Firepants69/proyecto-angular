@@ -7,8 +7,9 @@ interface Post {
   Texto: string;
   Likes: number;
   Comentarios: number;
-  islked : string;
+  isLiked : string;
   boardId: number;
+  accountImage: string;
 }
 
 interface toPost {
@@ -23,8 +24,9 @@ interface toPost {
 
 
 export class BoardsService {
-  
   readonly API_URL = `${baseUrl}/Boards/list`
+  readonly POST_LIKE_URL = `${baseUrl}/Like/post-likeBoard`;
+  readonly DELETE_LIKE_URL = `${baseUrl}/Like/delete-likeBoard`;
   readonly POST_URL = `${baseUrl}/Boards`
   
   boards: Post[];
@@ -39,7 +41,28 @@ export class BoardsService {
     return this.http.get<any[]>(this.API_URL,{headers});
    }
 
-   postBoard(newBoard: Partial<toPost>) {
+   addLike(boardId: string) {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    const body = { boardId:boardId };
+    return this.http.post<any>(this.POST_LIKE_URL, body, { headers });
+  }
+
+  // Método para eliminar un like
+  removeLike(boardId: string) {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    const body = { boardId:boardId };
+    return this.http.delete<any>(this.DELETE_LIKE_URL, { headers, body });
+  }
+  
+  postBoard(newBoard: Partial<toPost>) {
     const token = localStorage.getItem('authToken');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`

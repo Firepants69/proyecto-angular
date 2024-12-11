@@ -4,28 +4,44 @@
         <header class="encabezado">Lo más reciente</header>
         <br>
         <div *ngFor="let post of boardsService.boards" class="post-card">
-            <p>{{ post.Usuario }}</p>
+            
+            <div class="flex flex-row gap-2 jutsify-center items-center">
+                <img class="h-10 w-10 rounded-full" src={{post.accountImage}} />
+                <label class="text-2xl font-bold">{{ post.Usuario }}</label>
+            
+            </div>
             <p>{{ post.Texto }}</p>
-            <p>{{ post.Comentarios }}</p>
             <a [routerLink]="['/comments', post.boardId]" class="text-blue-500">
                 Ver comentarios
             </a>
-            <button class="like-button relative bottom-0 left-0 flex items-center gap-1"
-                (click)="post.Likes = (post.Likes || 0) + 1">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-black-500">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
-                </svg>
-                <span>{{ post.Likes }}</span>
-            </button>
+            <div class="flex flex-row gap-6">
+                <div class="flex flex-row jutsify-center items-center text-2xl gap-2">
+                    <svg 
+                    class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.556 8.5h8m-8 3.5H12m7.111-7H4.89a.896.896 0 0 0-.629.256.868.868 0 0 0-.26.619v9.25c0 .232.094.455.26.619A.896.896 0 0 0 4.89 16H9l3 4 3-4h4.111a.896.896 0 0 0 .629-.256.868.868 0 0 0 .26-.619v-9.25a.868.868 0 0 0-.26-.619.896.896 0 0 0-.63-.256Z"/>
+                      </svg>
+                    <p>{{post.Comentarios }}</p>
+                </div>
+                <button class="flex items-center gap-1" (click)="toggleLike(post)">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" 
+                      class="w-5 h-5" 
+                      [ngClass]="{'text-blue-500': post.isLiked, 'text-black-500': !post.isLiked}">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                    </svg>
+                    <span>{{ post.Likes }}</span>
+                  </button>
+                  
+            </div>
         </div> 
-        <div class="new-post">
+        <div class="relative">
             <a routerLink="/make-post">
               <button
-                routerLinkActive="fixed bottom-12 left-12 from-blue-600 to-blue-400 shadow-md bg-blue shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40"
-                class="post-button absolute bottom-12 right-12 flex text-xl bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-6 py-3 shadow-md">
+                routerLinkActive=" "
+                class="fixed bottom-12 right-12 flex text-xl bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-6 py-3 shadow-md">
                 Escribe algo
               </button>
             </a>
-          </div>         
+          </div>       
     </main>
 </div>
