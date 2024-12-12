@@ -1,47 +1,66 @@
 <div class="">
     
-    <main class="feed">
-        <header class="encabezado">Lo más reciente</header>
-        <br>
-        <div *ngFor="let post of boardsService.boards" class="post-card">
-            
-            <div class=" flex flex-row gap-2 jutsify-center items-center">
-                <img class="h-10 w-10 rounded-full" src={{post.accountImage}} />
-                <label class="text-2xl font-bold">{{ post.Usuario }}</label>
-            
-            </div>
-            <p>{{ post.Texto }}</p>
-            <a [routerLink]="['/comments', post.boardId]" class="text-blue-500">
-                Ver comentarios
-            </a>
-            <div class="flex flex-row gap-6">
-                <div class="flex flex-row jutsify-center items-center text-2xl gap-2">
-                    <svg 
-                    class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.556 8.5h8m-8 3.5H12m7.111-7H4.89a.896.896 0 0 0-.629.256.868.868 0 0 0-.26.619v9.25c0 .232.094.455.26.619A.896.896 0 0 0 4.89 16H9l3 4 3-4h4.111a.896.896 0 0 0 .629-.256.868.868 0 0 0 .26-.619v-9.25a.868.868 0 0 0-.26-.619.896.896 0 0 0-.63-.256Z"/>
-                      </svg>
-                    <p>{{post.Comentarios }}</p>
-                </div>
-                <button class="flex items-center gap-1" (click)="toggleLike(post)">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" 
-                      class="w-5 h-5" 
-                      [ngClass]="{'text-blue-500': post.isLiked, 'text-black-500': !post.isLiked}">
-                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
-                    </svg>
-                    <span>{{ post.Likes }}</span>
-                  </button>
+  <main class="feed">
+      <header class="encabezado">Lo más reciente</header>
+      <br>
+      <div *ngFor="let post of boardsService.boards" class="post-card">
+          
+          <div class=" flex flex-row gap-2 jutsify-center items-center">
+              <img class="h-10 w-10 rounded-full" src={{post.accountImage}} />
+              <label class="text-2xl font-bold">{{ post.Usuario }}</label>
+          
+          </div>
+          <p>{{ post.Texto }}</p>
+          <a [routerLink]="['/comments', post.boardId]" class="text-blue-500">
+              Ver comentarios
+          </a>
+          <div class="flex flex-row gap-6">
+              <div class="flex flex-row jutsify-center items-center text-2xl gap-2">
+                  <svg 
+                  class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                   
-            </div>
-        </div> 
-        <div class="relative">
-            <a routerLink="/make-post">
-              <button
-                routerLinkActive=" "
-                class="fixed bottom-12 right-12 flex text-xl bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-6 py-3 shadow-md">
-                Escribe algo
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.556 8.5h8m-8 3.5H12m7.111-7H4.89a.896.896 0 0 0-.629.256.868.868 0 0 0-.26.619v9.25c0 .232.094.455.26.619A.896.896 0 0 0 4.89 16H9l3 4 3-4h4.111a.896.896 0 0 0 .629-.256.868.868 0 0 0 .26-.619v-9.25a.868.868 0 0 0-.26-.619.896.896 0 0 0-.63-.256Z"/>
+                    </svg>
+                  <p>{{post.Comentarios }}</p>
+              </div>
+              <button class="flex items-center gap-1" (click)="toggleLike(post)">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" 
+                    class="w-5 h-5" 
+                    [ngClass]="{'text-blue-500': post.isLiked, 'text-black-500': !post.isLiked}">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                  </svg>
+                  <span>{{ post.Likes }}</span>
+                </button>
+                <button (click)="onEditBoard(post.boardId)"
+                      class="flex items-center justify-center p-2 text-white bg-transparent hover:bg-gray-700 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke-width="1.5" 
+                    stroke="currentColor" 
+                    class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" 
+                        d="M16.862 3.487a2.25 2.25 0 013.182 3.182L7.431 19.283a4.5 4.5 0 01-1.691 1.064l-4.243 1.415 1.415-4.243a4.5 4.5 0 011.064-1.691L16.862 3.487z" />
+                </svg>
               </button>
-            </a>
-          </div>       
-    </main>
+              <button 
+                (click)="onDeleteBoard(post.boardId)" 
+                class="relative bottom-0 right-0 text-red-500 hover:text-red-700 p-2 rounded-lg transition-colors duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+                
+          </div>
+      </div> 
+      <div class="relative">
+          <a routerLink="/make-post">
+            <button
+              routerLinkActive=" "
+              class="fixed bottom-12 right-12 flex text-xl bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-6 py-3 shadow-md">
+              Escribe algo
+            </button>
+          </a>
+        </div>       
+  </main>
 </div>

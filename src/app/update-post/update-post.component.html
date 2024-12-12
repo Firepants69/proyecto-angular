@@ -1,0 +1,26 @@
+<div class="main-container h-full bg-transparent">
+    <main class="make-post-card p-4 rounded-lg shadow-lg bg-[404040]">
+        <header class="encabezado text-xlg font-bold mb-4 text-gray-300">
+            Edita tu post
+        </header>
+        <br>
+        <form (ngSubmit)="editBoard()">
+            <textarea 
+                name="texto_post" 
+                id="texto_post" 
+                rows="10" 
+                [(ngModel)]="updatedBoardContent" 
+                class="block p-2.5 w-full text-sm bg-[#303030] rounded-lg text-gray-100" 
+                placeholder="Escribe algo...">
+            </textarea>
+            <br>
+            <a routerLink="/board">
+                <button 
+                type="submit" 
+                class="to-post relative bottom-0 right-0 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg text-base px-8 py-3">
+                Confirmar
+            </button>
+            </a>
+        </form>
+    </main>
+</div>
