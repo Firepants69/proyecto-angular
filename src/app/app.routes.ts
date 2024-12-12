@@ -6,6 +6,7 @@ import { CommentComponent } from './comment/comment.component';
 import { RouterModule } from '@angular/router';
 import { MakePostComponent } from './make-post/make-post.component';
 import { ThradComponent } from './threads/thrad/thrad.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 export const routes: Routes = [
     {
@@ -54,7 +55,12 @@ export const routes: Routes = [
                 path: 'make-post',
                 component: MakePostComponent,
                 canActivate: [authGuard]
+            },{
+                path: 'edit-profile',
+                component: EditProfileComponent,
+                canActivate: [authGuard]
             }
+
 
         ]
     },
