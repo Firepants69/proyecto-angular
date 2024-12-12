@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';//
 import { BoardsService } from '../../core/services/boards.service';
 import { Router } from '@angular/router';
+import { error } from 'console';
 
 
 @Component({
@@ -71,5 +72,21 @@ export class BoardListComponent implements OnInit{
 
     // Redirige a la página de edición del tablero
     this.router.navigate(['/update-post']);
+  }
+
+  onDeleteBoard(boardId: string): void {
+    if (confirm("¿Seguro que quieres eliminar este tablero?")) {
+      localStorage.setItem('boardId', boardId);
+      this.boardsService.deleteBoard().subscribe({
+        next: (response) => {
+          console.log('Tablero eliminado', response);
+          this.getBoards()
+        },
+        error: (error) => {
+          console.error('Error al eliminar el tablero', error)
+        }
+      })
+      
+    } 
   }
 }

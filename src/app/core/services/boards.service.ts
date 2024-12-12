@@ -84,4 +84,18 @@ export class BoardsService {
     const url = `${this.POST_URL}/${boardId}`;
     return this.http.put<Post>(url, updatedBoard, { headers })
    }
+
+   deleteBoard() {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    const boardId = localStorage.getItem('boardId');
+
+    if (!boardId) {
+      console.error('No boardId found in localStorage');
+    }
+    const url = `${this.POST_URL}/${boardId}`;
+    return this.http.delete<any>(url, { headers })
+   }
 }

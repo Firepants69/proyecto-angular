@@ -31,9 +31,24 @@
                     <span>{{ post.Likes }}</span>
                   </button>
                   <button (click)="onEditBoard(post.boardId)"
-                  class="flex relative right-0 top-2 text-sm text-white border border-black">
-                    Editar Tablero
-                  </button>
+                        class="flex items-center justify-center p-2 text-white bg-transparent hover:bg-gray-700 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke-width="1.5" 
+                      stroke="currentColor" 
+                      class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" 
+                          d="M16.862 3.487a2.25 2.25 0 013.182 3.182L7.431 19.283a4.5 4.5 0 01-1.691 1.064l-4.243 1.415 1.415-4.243a4.5 4.5 0 011.064-1.691L16.862 3.487z" />
+                  </svg>
+                </button>
+                <button 
+                  (click)="onDeleteBoard(post.boardId)" 
+                  class="relative bottom-0 right-0 text-red-500 hover:text-red-700 p-2 rounded-lg transition-colors duration-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
             </div>
         </div> 
         <div class="relative">
