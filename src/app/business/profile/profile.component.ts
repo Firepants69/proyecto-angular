@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../core/services/account.service';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })

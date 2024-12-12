@@ -56,6 +56,7 @@ export const routes: Routes = [
                 path: 'make-post',
                 component: MakePostComponent,
                 canActivate: [authGuard]
+
             },
             {
                 path: 'update-post',
@@ -66,9 +67,7 @@ export const routes: Routes = [
                 path: 'edit-profile',
                 component: EditProfileComponent,
                 canActivate: [authGuard]
-
             }
-
         ]
     },
     {
