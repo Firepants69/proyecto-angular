@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Edita tu respuesta</h2>
+<mat-dialog-content>
+  <textarea 
+    class="border border-gray-400 w-full text-2xl" 
+    [(ngModel)]="userInput">
+  </textarea>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close cdkFocusInitial>Cancelar</button>
+  <button mat-button (click)="guardar()">Guardar</button>
+</mat-dialog-actions>

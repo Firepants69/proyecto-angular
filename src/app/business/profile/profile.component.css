@@ -1,0 +1,46 @@
+.main-container {
+    display: flex;
+    height: 100vh;
+  }  
+  .encabezado {
+    font-size: xx-large;
+    font-weight: 500;
+    color: #b9b9b9;
+  }
+  
+  .feed {
+    flex: 1;
+    background-color: #323232;
+    padding: 1.5rem;
+  }
+  
+  .post-card {
+    background-color: #404040;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.424);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: #b9b9b9;
+  }
+  
+  .post-card p {
+    margin: 0.5rem 0.5;
+  }
+  
+  .post-card p:first-child {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #181818;
+    color: #b9b9b9;
+  }
+  
+  .post-card p:nth-child(even) {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #b9b9b9;
+  }
+  
+  .post-card p:last-child {
+    font-size: 0.750rem;
+    color: #b9b9b9;
+  }
