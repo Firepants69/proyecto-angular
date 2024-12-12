@@ -30,6 +30,7 @@ export class BoardsService {
   readonly POST_URL = `${baseUrl}/Boards`
   
   boards: Post[];
+  board: any;
   constructor(private http: HttpClient) {
     this.boards = [];
    }
@@ -68,5 +69,15 @@ export class BoardsService {
       Authorization: `Bearer ${token}`
     });
     return this.http.post<Partial<toPost>>(this.POST_URL, newBoard, { headers });
+   }
+
+   getBoardById(boardId:string){
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    
+    return this.http.get<any>(`${this.POST_URL}/${boardId}`, { headers});
    }
 }

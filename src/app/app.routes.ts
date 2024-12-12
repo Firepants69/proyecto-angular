@@ -45,12 +45,7 @@ export const routes: Routes = [
                 canActivate: [authGuard]
 
             },
-            {
-                path: 'comments/:id/:thredId', 
-                component: ThradComponent,
-                canActivate: [authGuard]
-
-            },
+            
             {
                 path: 'make-post',
                 component: MakePostComponent,

@@ -20,6 +20,7 @@ export class AuthService {
         if(response.accessToken){
           this.setToken(response.accessToken);
           localStorage.setItem("userId",response.userId)
+          localStorage.setItem("userName",response.userName)
         }
       })
     );

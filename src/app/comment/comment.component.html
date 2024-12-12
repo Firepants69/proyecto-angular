@@ -1,17 +1,81 @@
-<div class="post-container">
-  
+<div class="post-container border-l">
+  <div  class="post-card ">
+            
+    <div [routerLink]="['/board']" class="mb-4 flex flex-row gap-2 jutsify-center items-center">
+        <img class="h-14 w-14 rounded-full" alt="img" src={{boardService.board.image}} />
+        <label class="flex jutsify-center items-center gap-3 text-3xl font-bold">
+          <span> {{boardService.board.userName  }}</span>
+          <span class="text-sm text-gray-500">{{boardService.board.date}}</span>
+        </label>
+    </div>
+    <p class="text-2xl">{{boardService.board.content }}</p>
+    
+    
+</div>
 
   <div *ngFor="let comment of this.threadService.threads" class="comment-card">
-    <p><strong>{{ comment.Usuario }}:</strong> {{ comment.Texto }}</p>
-    <a [routerLink]="['/comments', comment.boardId,comment.id]" class="text-blue-500" >
-      Ver comentarios
+
+    <ng-container *ngIf="!comment.isDelete; else deletedTemplate">
+      <div class="w-full mb-2 flex flex-row justify-between items-center">
+        <div class="flex items-start gap-2">
+          <img class="h-10 w-10 rounded-full" src={{comment.accountImage}} />
+          <label class="flex jutsify-center items-center gap-3 text-2xl font-bold">
+            <span> {{comment.Usuario }}</span>
+            <span class="text-sm text-gray-500">{{comment.date}}</span>
+          </label>
+          
+        </div>
+      
+        <!-- Agrupa los botones -->
+        <div class="flex gap-4 " *ngIf="this.userName == comment.Usuario">
+          <button (click)="openDialog(comment.id)" mat-raised-button class="flex items-center hover:bg-green-600 px-2 py-2 rounded-full">
+            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28"/>
+            </svg>
+          </button>
+      
+          <button (click)="openDialogDelete(comment.id)"  class="flex items-center hover:bg-red-600 px-2 py-2 rounded-full">
+            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      
+    <p>{{comment.Texto}}</p>
+      
+      <div class="flex flex-row gap-6">
+
+        <button class="flex items-center gap-1" (click)="toggleLike(comment)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" 
+            class="w-5 h-5" 
+            [ngClass]="{'text-blue-500': comment.isLiked, 'text-black-500': !comment.isLiked}">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+          </svg>
+          <span>{{ comment.Likes }}</span>
+        </button>
+      </div>
+    </ng-container>
+    
+    <ng-template #deletedTemplate>
+      <p class="text-gray-500 italic">Este comentario ha sido eliminado.</p>
+    </ng-template>
+    
+  </div>
+  <div class="relative">
+    <a >
+      <button
+      (click)="openDialogCreate()" mat-raised-button
+        routerLinkActive=" "
+        class="fixed bottom-12 right-12 flex text-xl bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-6 py-3 shadow-md">
+        Escribe algo
+      </button>
     </a>
-    <button class="like-button relative bottom-0 left-0 flex items-center gap-1"
-                (click)="comment.Likes = (comment.Likes || 0) + 1">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5 text-black-500">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
-                </svg>
-                <span>{{ comment.Likes }}</span>
-              </button>
   </div>
 </div>
+
+<script>
+  console.log("userName:", userName);
+  console.log("comment.userName:", comment.userName);
+</script>
