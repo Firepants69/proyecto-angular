@@ -19,4 +19,12 @@ export class AccountService {
     });
     return this.http.get<any>(this.API_URL,{headers});
   }
+
+  updateAccount(updatedAccount: any) {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.put<any>(`${this.API_URL}/${updatedAccount.id}`, updatedAccount, { headers });
+  }
 }

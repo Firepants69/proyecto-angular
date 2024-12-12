@@ -25,8 +25,18 @@ export class EditProfileComponent implements OnInit{
       },error: (err)=>{
         console.error(err);
       }
-    })
+    });
   }
 
-  
+  updateProfile() {
+    const updatedAccount = this.accountService.account;
+    this.accountService.updateAccount(updatedAccount).subscribe({
+      next: (response) => {
+        console.log('Account updated successfully:', response);
+      },
+      error: (err) => {
+        console.error('Error updating account:', err);
+      }
+    });
+  }
 }
