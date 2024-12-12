@@ -12,9 +12,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login.component.css'
 })
 export default class LoginComponent {
+  // Arreglo de frases
+  public phrases: string[] = ["Hola mi amor", "Hola mi vida", "Holis cariñito","Que quieres puta?","Callate elocico mivida"];
+  public selectedPhrase: string = "";
   user: string = '';
   password: string = '';
-  errorMessage: string = '';  // Variable para el mensaje de error
 
   constructor (private authService: AuthService,private router: Router){
 
@@ -23,12 +25,17 @@ export default class LoginComponent {
   login(): void{
     this.authService.login(this.user,this.password).subscribe({
       next:()=> this.router.navigate(["/dashboard"]),
-      error:(err)=> {
-        console.error(err)
-        this.errorMessage = 'Credenciales incorrectas. Intenta nuevamente.';
-      }
-      
+      error:(err)=> console.error('login fallido',err)
     })
+  }
+
+  ngOnInit(): void {
+    this.selectRandomPhrase(); 
+  }
+
+  selectRandomPhrase() {
+    const randomIndex = Math.floor(Math.random() * this.phrases.length);
+    this.selectedPhrase = this.phrases[randomIndex];
   }
   
 }
