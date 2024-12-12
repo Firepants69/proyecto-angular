@@ -40,6 +40,7 @@
       <div class="p-4">
         <label for="userName" class="block antialiased font-sans text-base leading-normal font-bold text-[#64abdb]">Nombre de usuario:</label>
         <input
+          [(ngModel)]="user"
           id="userName"
           type="text" 
           placeholder="[(ngModel)]=accountService.account.userName"  
@@ -48,9 +49,9 @@
       <div class="border-t border-blue-gray-50 p-4">
         <label for="email" class="block antialiased font-sans text-base leading-normal font-bold text-white">Correo:</label>
         <input 
+          [(ngModel)]="email"
           id="email"
           type="email" 
-          placeholder="[(ngModel)]=accountService.account.email" 
           class="w-full px-3 py-2 rounded-md bg-[#303030] text-gray-400">
   
         <p class="block antialiased font-sans text-base leading-relaxed font-normal text-white font-bold mt-4">Cuenta creada el: 

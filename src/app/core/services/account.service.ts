@@ -29,12 +29,15 @@ export class AccountService {
     return this.http.get<any[]>(this.YOUR_BOARDS,{headers})
   }
 
-  updateAccount(updatedAccount: any) {
+  updateAccount(userName:string,email:string) {
     const token = localStorage.getItem('authToken');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
-    return this.http.put<any>(`${this.API_URL}/${updatedAccount.id}`, updatedAccount, { headers });
+    const formData = new FormData();
+    formData.append('userName', userName);
+    formData.append('email', email);
+    return this.http.put<any>(`${this.API_URL}`,formData, { headers });
   }
 
 }
