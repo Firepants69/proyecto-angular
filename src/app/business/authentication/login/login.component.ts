@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export default class LoginComponent {
   user: string = '';
   password: string = '';
+  errorMessage: string = '';  // Variable para el mensaje de error
 
   constructor (private authService: AuthService,private router: Router){
 
@@ -22,7 +23,11 @@ export default class LoginComponent {
   login(): void{
     this.authService.login(this.user,this.password).subscribe({
       next:()=> this.router.navigate(["/dashboard"]),
-      error:(err)=> console.error('login fallido',err)
+      error:(err)=> {
+        console.error(err)
+        this.errorMessage = 'Credenciales incorrectas. Intenta nuevamente.';
+      }
+      
     })
   }
   
