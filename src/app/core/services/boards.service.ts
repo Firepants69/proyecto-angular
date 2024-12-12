@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { baseUrl } from '../../../baseUrl';
+import { Observable } from 'rxjs';
 
 interface Post {
   Usuario: string;
@@ -8,7 +9,7 @@ interface Post {
   Likes: number;
   Comentarios: number;
   isLiked : string;
-  boardId: number;
+  boardId: string;
   accountImage: string;
 }
 
@@ -79,5 +80,33 @@ export class BoardsService {
 
     
     return this.http.get<any>(`${this.POST_URL}/${boardId}`, { headers});
+   }
+   
+   editBoard(updatedBoard: { content: string }): Observable<Post> {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    const boardId = localStorage.getItem('boardId');
+
+    if (!boardId) {
+      console.error('No boardId found in localStorage');
+    }
+    const url = `${this.POST_URL}/${boardId}`;
+    return this.http.put<Post>(url, updatedBoard, { headers })
+   }
+
+   deleteBoard() {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    const boardId = localStorage.getItem('boardId');
+
+    if (!boardId) {
+      console.error('No boardId found in localStorage');
+    }
+    const url = `${this.POST_URL}/${boardId}`;
+    return this.http.delete<any>(url, { headers })
    }
 }

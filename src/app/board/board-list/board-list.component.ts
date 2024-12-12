@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';//
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';//
 import { BoardsService } from '../../core/services/boards.service';
 
 
@@ -14,11 +14,15 @@ import { BoardsService } from '../../core/services/boards.service';
 
 
 export class BoardListComponent implements OnInit{
-  constructor(public boardsService: BoardsService){
+  constructor(public boardsService: BoardsService, private route: ActivatedRoute, private router: Router){
 
   }
+  boardId: number | null = null;
+  userId: string | null = localStorage.getItem('userId');
+
   ngOnInit(): void {
-    this.getBoards();
+    this.getBoards(),
+    this.boardId = +this.route.snapshot.paramMap.get('id')!;
   }
 
   
@@ -57,6 +61,29 @@ export class BoardListComponent implements OnInit{
         board.isLiked = true;
       });
     }
+  }
+  onEditBoard(boardId: string): void {
+    // Guarda el ID del tablero en el localStorage para usarlo luego
+    localStorage.setItem('boardId', boardId);
+
+    // Redirige a la página de edición del tablero
+    this.router.navigate(['/update-post']);
+  }
+
+  onDeleteBoard(boardId: string): void {
+    if (confirm("¿Seguro que quieres eliminar este tablero?")) {
+      localStorage.setItem('boardId', boardId);
+      this.boardsService.deleteBoard().subscribe({
+        next: (response) => {
+          console.log('Tablero eliminado', response);
+          this.getBoards()
+        },
+        error: (error) => {
+          console.error('Error al eliminar el tablero', error)
+        }
+      })
+      
+    } 
   }
   
 }
