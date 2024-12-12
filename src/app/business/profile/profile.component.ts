@@ -3,11 +3,12 @@ import { AccountService } from '../../core/services/account.service';
 import { BoardsService } from '../../core/services/boards.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule,RouterLink, RouterLinkActive],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
