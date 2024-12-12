@@ -24,11 +24,7 @@ export const routes: Routes = [
                 loadComponent: () => import('./business/profile/profile.component'),
                 canActivate: [authGuard]
             },
-            {
-                path: 'tables',
-                loadComponent: () => import('./business/tables/tables.component'),
-                canActivate: [authGuard]
-            },
+            
             {
                 path: '',
                 redirectTo: 'board',

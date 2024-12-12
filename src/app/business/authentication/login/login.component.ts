@@ -22,7 +22,7 @@ export default class LoginComponent {
   
   login(): void{
     this.authService.login(this.user,this.password).subscribe({
-      next:()=> this.router.navigate(["/dashboard"]),
+      next:()=> this.router.navigate(["/Feed"]),
       error:(err)=> {
         console.error(err)
         this.errorMessage = 'Credenciales incorrectas. Intenta nuevamente.';
