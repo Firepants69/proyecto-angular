@@ -6,6 +6,7 @@ import { CommentComponent } from './comment/comment.component';
 import { RouterModule } from '@angular/router';
 import { MakePostComponent } from './make-post/make-post.component';
 import { ThradComponent } from './threads/thrad/thrad.component';
+import { UpdatePostComponent } from './update-post/update-post.component';
 
 export const routes: Routes = [
     {
@@ -54,6 +55,11 @@ export const routes: Routes = [
                 path: 'make-post',
                 component: MakePostComponent,
                 canActivate: [authGuard]
+            },
+            {
+                path: 'update-post',
+                component: UpdatePostComponent,
+                canActivate: [authGuard]
             }
 
         ]
@@ -65,6 +71,6 @@ export const routes: Routes = [
     },
     {
         path: '**',
-        redirectTo: 'dashboard'
+        redirectTo: 'board'
     }
 ];

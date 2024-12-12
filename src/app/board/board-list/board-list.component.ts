@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';//
+import { ActivatedRoute, RouterModule } from '@angular/router';//
 import { BoardsService } from '../../core/services/boards.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,11 +15,15 @@ import { BoardsService } from '../../core/services/boards.service';
 
 
 export class BoardListComponent implements OnInit{
-  constructor(public boardsService: BoardsService){
+  constructor(public boardsService: BoardsService, private route: ActivatedRoute, private router: Router){
 
   }
+  boardId: number | null = null;
+  userId: string | null = localStorage.getItem('userId');
+
   ngOnInit(): void {
-    this.getBoards();
+    this.getBoards(),
+    this.boardId = +this.route.snapshot.paramMap.get('id')!;
   }
 
   
@@ -28,6 +33,7 @@ export class BoardListComponent implements OnInit{
       next:(data)=>{
         console.log(data)
         this.boardsService.boards = data.map(board=>({
+          userId: board.user,
           Usuario: board.user.name,
           Texto: board.content,
           Likes: board.numOfLikes,
@@ -58,5 +64,12 @@ export class BoardListComponent implements OnInit{
       });
     }
   }
-  
+
+  onEditBoard(boardId: string): void {
+    // Guarda el ID del tablero en el localStorage para usarlo luego
+    localStorage.setItem('boardId', boardId);
+
+    // Redirige a la página de edición del tablero
+    this.router.navigate(['/update-post']);
+  }
 }

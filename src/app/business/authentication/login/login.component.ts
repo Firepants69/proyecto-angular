@@ -21,7 +21,7 @@ export default class LoginComponent {
   
   login(): void{
     this.authService.login(this.user,this.password).subscribe({
-      next:()=> this.router.navigate(["/dashboard"]),
+      next:()=> this.router.navigate(["/board-list"]),
       error:(err)=> console.error('login fallido',err)
     })
   }
