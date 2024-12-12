@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { baseUrl } from '../../../baseUrl';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +21,13 @@ export class AccountService {
     return this.http.get<any>(this.API_URL,{headers});
   }
 
-  updateAccount(updatedAccount: any) {
+  updateAccount(param1: string, param2: string): Observable<any> {
     const token = localStorage.getItem('authToken');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
-    return this.http.put<any>(`${this.API_URL}/${updatedAccount.id}`, updatedAccount, { headers });
+
+    const urlWithParams = `${this.API_URL}?userName=${param1}&email=${param2}`;
+    return this.http.put<any>(urlWithParams, { headers });
   }
 }

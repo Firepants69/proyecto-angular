@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from './../core/services/account.service';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-profile',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.css'
 })
@@ -12,7 +15,8 @@ export class EditProfileComponent implements OnInit{
   constructor(public accountService: AccountService){
 
   }
-
+  newUsername: string = '';
+  newEmail: string = '';
   ngOnInit(): void {
     this.getProfile();
   }
@@ -29,8 +33,10 @@ export class EditProfileComponent implements OnInit{
   }
 
   updateProfile() {
-    const updatedAccount = this.accountService.account;
-    this.accountService.updateAccount(updatedAccount).subscribe({
+    console.log('Método updateProfile ejecutado');
+    const updatedUser = this.newUsername
+    const updatedEmail = this.newEmail
+    this.accountService.updateAccount(updatedUser, updatedEmail).subscribe({
       next: (response) => {
         console.log('Account updated successfully:', response);
       },
