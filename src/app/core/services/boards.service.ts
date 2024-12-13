@@ -10,6 +10,7 @@ interface Post {
   isLiked : string;
   boardId: number;
   accountImage: string;
+  date: string,
 }
 
 interface toPost {
@@ -80,4 +81,24 @@ export class BoardsService {
     
     return this.http.get<any>(`${this.POST_URL}/${boardId}`, { headers});
    }
+
+   editBoard(boardId:any,newText:string){
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    const body = {  content: newText};
+    
+    return this.http.put<any>(`${this.POST_URL}/${boardId}`,body, { headers});
+  }
+
+  deleteBoard(boardId:any){
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    return this.http.delete<any>(`${this.POST_URL}/${boardId}`, { headers});
+  }
+
 }

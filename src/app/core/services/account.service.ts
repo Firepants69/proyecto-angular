@@ -40,4 +40,13 @@ export class AccountService {
     return this.http.put<any>(`${this.API_URL}`,formData, { headers });
   }
 
+  register(userName:string,email:string,password:string) {
+    const body = {
+        "userName": userName,
+        "email": email,
+        "password": password
+    }
+    return this.http.post<any>(`${this.API_URL}/register`,body);
+  }
+
 }

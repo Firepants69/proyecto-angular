@@ -10,12 +10,20 @@ import { DialogComponent } from '../components/dialog/dialog.component';
 import { DialogCComponent } from '../components/dialog-c/dialog-c.component';
 import { baseUrl, UrlHost } from '../../baseUrl';
 import { DialogDComponent } from '../components/dialog-d/dialog-d.component';
- //
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import { MarkdownModule } from 'ngx-markdown';			
+
+
 
 @Component({
   selector: 'app-comment',
   standalone: true,
-  imports: [CommonModule,RouterModule], //
+  imports: [CommonModule,RouterModule,
+        MatCardModule,
+          MatDividerModule,
+          MarkdownModule
+  ], //
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.css'
 })

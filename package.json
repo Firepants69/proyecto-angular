@@ -23,8 +23,13 @@
     "@angular/platform-server": "^18.0.0",
     "@angular/router": "^18.0.0",
     "@angular/ssr": "^18.0.1",
+    "@kolkov/angular-editor": "^3.0.0-beta.0",
+    "angular-font-awesome": "^3.1.2",
     "express": "^4.18.2",
+    "ng": "^0.0.0",
     "ng-menu-dashboard": "file:",
+    "ngx-markdown": "^18.0.0",
+    "quill": "^2.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

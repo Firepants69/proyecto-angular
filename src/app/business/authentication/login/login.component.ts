@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,RouterModule,RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -22,7 +22,7 @@ export default class LoginComponent {
   
   login(): void{
     this.authService.login(this.user,this.password).subscribe({
-      next:()=> this.router.navigate(["/dashboard"]),
+      next:()=> this.router.navigate(["/board"]),
       error:(err)=> {
         console.error(err)
         this.errorMessage = 'Credenciales incorrectas. Intenta nuevamente.';

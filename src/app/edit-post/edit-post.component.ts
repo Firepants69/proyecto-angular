@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component,OnInit  } from '@angular/core';
+import { CommonModule,Location  } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AngularEditorConfig, AngularEditorModule } from '@kolkov/angular-editor';
@@ -18,11 +18,35 @@ import { BoardsService } from '../core/services/boards.service';
   templateUrl: './make-post.component.html',
   styleUrls: ['./make-post.component.css']
 })
-export class MakePostComponent {
+export class editPostComponent implements OnInit {
   htmlContent: string = '';  // Este es el contenido del editor, que estará vinculado a [(ngModel)]
+  postId: string ='';
+  thenPost: string = '';
 
-  constructor(public boardsService: BoardsService, private router: Router) {}
+  constructor(public boardsService: BoardsService, private router: Router,private location: Location) {}
+  
+  ngOnInit(): void {
+    const state = history.state;
+    if (state) {
+      this.postId = state.postId;
+      this.thenPost = state.thenPost;
+      console.log('Post ID:', this.postId);
+      console.log('Other Data:', this.thenPost);
+      this.htmlContent = this.thenPost;
+    }
+  }
 
+  editPost(){
+    this.boardsService.editBoard(this.postId,this.htmlContent).subscribe({
+      next:(data)=>{
+        console.log(data)
+        this.router .navigate(['/board'])
+      },error:(err)=>{
+        console.error(err);
+      }
+    })
+  }
+  
   // Configuración del editor
   editorConfig: AngularEditorConfig = {
     editable: true,

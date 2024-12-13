@@ -1,6 +1,6 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
+import { provideMarkdown } from 'ngx-markdown';   
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
@@ -11,6 +11,8 @@ export const appConfig: ApplicationConfig = {
     { eventCoalescing: true }),
      provideRouter(routes),
     provideClientHydration(),
-    provideHttpClient(withFetch()), provideAnimationsAsync()
+    provideHttpClient(withFetch()),
+    provideMarkdown() , provideAnimationsAsync(),    
+    provideMarkdown(),  
   ]
 };

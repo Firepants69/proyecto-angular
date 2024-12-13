@@ -5,9 +5,11 @@ import { BoardListComponent } from './board/board-list/board-list.component';
 import { CommentComponent } from './comment/comment.component';
 import { RouterModule } from '@angular/router';
 import { MakePostComponent } from './make-post/make-post.component';
+import {editPostComponent} from '../app/edit-post/edit-post.component'
 import { ThradComponent } from './threads/thrad/thrad.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
-
+import {MarkdownEComponent} from '../app/markdown-e/markdown-e.component'
+import { RegisterComponent } from './business/authentication/register/register.component';
 export const routes: Routes = [
     {
         path: '',
@@ -23,11 +25,7 @@ export const routes: Routes = [
                 loadComponent: () => import('./business/profile/profile.component'),
                 canActivate: [authGuard]
             },
-            {
-                path: 'tables',
-                loadComponent: () => import('./business/tables/tables.component'),
-                canActivate: [authGuard]
-            },
+           
             {
                 path: '',
                 redirectTo: 'dashboard',
@@ -39,18 +37,29 @@ export const routes: Routes = [
                 canActivate: [authGuard]
 
             },
+            
             {
                 path: 'comments/:id', 
                 component: CommentComponent,
                 canActivate: [authGuard]
 
             },
-            
+            {
+                path: 'test', 
+                component: MarkdownEComponent,
+
+            },
             {
                 path: 'make-post',
                 component: MakePostComponent,
                 canActivate: [authGuard]
-            },{
+            },
+            {
+                path: 'edit-post',
+                component: editPostComponent,
+                canActivate: [authGuard]
+            },
+            {
                 path: 'edit-profile',
                 component: EditProfileComponent,
                 canActivate: [authGuard]
@@ -62,6 +71,11 @@ export const routes: Routes = [
     {
         path: 'login',
         loadComponent: () => import('./business/authentication/login/login.component'),
+        canActivate: [authenticatedGuard]
+    },
+    {
+        path: 'register',
+        component: RegisterComponent,
         canActivate: [authenticatedGuard]
     },
     {

@@ -4,11 +4,19 @@ import { BoardsService } from '../../core/services/boards.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import { MarkdownModule } from 'ngx-markdown';			
+
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, RouterModule,RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterModule,RouterLink, RouterLinkActive,
+    MatCardModule,
+              MatDividerModule,
+              MarkdownModule
+  ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -32,7 +40,8 @@ export default class ProfileComponent implements OnInit{
           Comentarios: board.numOfResponses,
           isLiked : board.isLiked,
           boardId: board.id,
-          accountImage: board.user.image == null ? "https://localhost:7257/user-ico/default.jpg":board.user.image  
+          accountImage: board.user.image == null ? "https://localhost:7257/user-ico/default.jpg":board.user.image , 
+          date: new Date(board.date).toLocaleDateString(),
         }))
       }),error:(err)=>{
         console.error(err)

@@ -24,10 +24,21 @@
             
     <div class="mb-2 flex flex-row gap-2 jutsify-center items-center">
         <img class="h-10 w-10 rounded-full" src={{post.accountImage}} />
-        <label class="text-2xl font-bold">{{ post.Usuario }}</label>
+         <label class="flex jutsify-center items-center gap-3 text-2xl font-bold">
+            <span> {{post.Usuario }}</span>
+            <span class="text-sm text-gray-500">{{post.date}}</span>
+          </label>
     
     </div>
-    <p>{{ post.Texto }}</p>
+    <div class="flex justify-start items-center">
+      <mat-card-content>
+        <!-- {{mainArticleContent.articleContent}} -->
+        <div markdown ngPreserveWhitespaces
+           >
+           {{post.Texto}}		
+        </div>
+      </mat-card-content>
+    </div>
     <a  class="text-blue-500">
         Ver comentarios
     </a>
