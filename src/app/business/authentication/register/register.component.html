@@ -20,7 +20,6 @@
             </div>
             <form (ngSubmit)="register()">
                 <div class="space-y-6">
-                  <!-- Campo para el nombre de usuario -->
                   <input
                     class="w-full text-sm px-4 py-3 bg-gray-200 focus:bg-gray-100 border rounded-lg focus:outline-none focus:border-purple-400"
                     type="text"
@@ -29,8 +28,6 @@
                     placeholder="Usuario"
                     required
                   />
-            
-                  <!-- Campo para el correo -->
                   <input
                     class="w-full text-sm px-4 py-3 bg-gray-200 focus:bg-gray-100 border rounded-lg focus:outline-none focus:border-purple-400"
                     type="email"
@@ -39,8 +36,6 @@
                     placeholder="Correo"
                     required
                   />
-            
-                  <!-- Campo para la contraseña -->
                   <input
                     class="w-full text-sm px-4 py-3 bg-gray-200 focus:bg-gray-100 border rounded-lg focus:outline-none focus:border-purple-400"
                     type="password"
@@ -50,7 +45,6 @@
                     required
                   />
             
-                  <!-- Botón para registrarse -->
                   <button
                     type="submit"
                     class="w-full flex justify-center bg-purple-800 hover:bg-purple-700 text-gray-100 p-3 rounded-lg tracking-wide font-semibold cursor-pointer transition ease-in duration-500">
@@ -59,10 +53,8 @@
                 </div>
               </form>
             
-              <!-- Mensaje de error -->
               <div *ngIf="errorMessage" class="text-red-500 mt-4">{{ errorMessage }}</div>
             
-              <!-- Mensaje de éxito -->
               <div *ngIf="successMessage" class="text-green-500 mt-4">{{ successMessage }}</div>
                
             </div>

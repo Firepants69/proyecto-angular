@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { baseUrl } from '../../../baseUrl';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class AccountService {
     });
     return this.http.get<any>(this.API_URL,{headers});
   }
+  register(user: { userName: string; email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.API_URL}/register`, user);
+  }
+
   getYourBoards(){
     const token = localStorage.getItem('authToken');
     const headers = new HttpHeaders({
