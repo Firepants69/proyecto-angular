@@ -7,10 +7,15 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  private registerUrl = 'https://localhost:7257/api/Users/Register';
   private LOGIN_URL = 'https://localhost:7257/api/Users/Login';
   private tokenKey = 'authToken';
 
   constructor(private httpClient: HttpClient,private router:Router) {
+  }
+
+  register(user: { userName: string; email: string; password: string }): Observable<any> {
+    return this.httpClient.post(this.registerUrl, user);
   }
   
   login(userName:string,password:string): Observable<any>{

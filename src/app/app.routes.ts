@@ -8,6 +8,7 @@ import { MakePostComponent } from './make-post/make-post.component';
 import { ThradComponent } from './threads/thrad/thrad.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { UpdatePostComponent } from './update-post/update-post.component';
+import { RegisterComponent } from './business/authentication/register/register.component';
 
 export const routes: Routes = [
     {
@@ -55,6 +56,9 @@ export const routes: Routes = [
                 path: 'edit-profile',
                 component: EditProfileComponent,
                 canActivate: [authGuard]
+            },{
+                path: 'register',
+                component: RegisterComponent,
             }
 
 

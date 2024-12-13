@@ -1,3 +1,4 @@
+<!-- component -->
 <div
     class="bg-blue-500 absolute top-0 left-0 bg-gradient-to-b from-[#000000] via-blue-900 to-blue-600  bottom-0 leading-5 h-full w-full overflow-hidden">
 
@@ -9,43 +10,62 @@
             <h1 class="my-3 font-semibold text-4xl">Foro Posting</h1>
             <p class="pr-3 text-sm opacity-75">Un sitio web para poder compartir estados, noticias o cualquiera de tus pensamientos, dialoga con otros.</p>
         </div>
-      </div>
+    </div>
     <div class="flex justify-center self-center  z-10">
         <div class="p-12 bg-white mx-auto rounded-3xl w-96 ">
             <div class="mb-7">
                 <h3 class="font-semibold text-2xl text-gray-800">Iniciar sesión </h3>
-                <p class="text-gray-400">¿No tienes una cuenta? <a href="#"
-                        class="text-sm text-purple-700 hover:text-purple-700">Registrate</a></p>
+                <p class="text-gray-400">¿No tienes una cuenta?<a routerLink="/register">
+                    <button
+                      routerLinkActive=" " class="text-sm text-[#3c71d3] hover:text-light-blue-500">Registrate </button>
+                    </a></p>
             </div>
             <div class="space-y-6">
                 <div class="">
                     <input
                         [(ngModel)]="user"
                         class=" w-full text-sm  px-4 py-3 bg-gray-200 focus:bg-gray-100 border  border-gray-200 rounded-lg focus:outline-none focus:border-purple-400"
-                        type="" placeholder="UserName">
+                        
+                        type="" placeholder="Usuario">
                 </div>
+
+
                 <div class="relative" x-data="{ show: true }">
                     <input 
                     [(ngModel)]="password"
-                    placeholder="Password" type="password" style="color: #000;"
+                    
+                    placeholder="Password" type="Contraseña" style="color: #000;"
                         class="text-sm text-gray-200 px-4 py-3 rounded-lg w-full bg-gray-200 focus:bg-gray-100 border border-gray-200 focus:outline-none focus:border-purple-400">
                     <div class="flex items-center absolute inset-y-0 right-0 mr-3  text-sm leading-5">
+
+
+
                     </div>
                 </div>
-                <div>
+
+                <div *ngIf="!errorMessage" class="mb-10 text-white">
+                    <p>Credenciales incorrectas. Intenta nuevamente.</p>
+                </div>
+                <div *ngIf="errorMessage" class="mb-10 text-red-400">
+                    <p>{{errorMessage}}</p>
+                </div>
+                <div class="">
                     <button 
                     (click)="login()"
                     type="submit"
-                        class="fixed bottom-12 right-12 flex text-xl bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-6 py-3 shadow-md font-semibold">
-                        Sign in
+                        class="w-full flex justify-center flex text-xl bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-6 py-3 shadow-md font-semibold">
+                        Iniciar sesion
                     </button>
                 </div>
+                
+                <div class="flex justify-center gap-5 w-full ">
+
+               
+
+
+                </div>
             </div>
-            <div class="mt-7 text-center text-gray-300 text-xs">
-                <span>
-                    Copyright CagadaDoSapo©
-                    </span>
-            </div>
+        
         </div>
     </div>
 

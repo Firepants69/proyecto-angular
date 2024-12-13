@@ -3,20 +3,19 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,RouterLink, RouterLinkActive],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export default class LoginComponent {
-  // Arreglo de frases
-  public phrases: string[] = ["Hola mi amor", "Hola mi vida", "Holis cariñito","Que quieres puta?","Callate elocico mivida"];
-  public selectedPhrase: string = "";
   user: string = '';
   password: string = '';
+  errorMessage: string = '';  // Variable para el mensaje de error
 
   constructor (private authService: AuthService,private router: Router){
 
@@ -31,15 +30,6 @@ export default class LoginComponent {
       }
       
     })
-  }
-
-  ngOnInit(): void {
-    this.selectRandomPhrase(); 
-  }
-
-  selectRandomPhrase() {
-    const randomIndex = Math.floor(Math.random() * this.phrases.length);
-    this.selectedPhrase = this.phrases[randomIndex];
   }
   
 }
